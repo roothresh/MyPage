@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyPage.Controllers
 {
-    public class Category : Controller
+    public class BlogController : Controller
     {
-        CategoryManager categoryManager = new CategoryManager(new EFCategoryRepository());
+
+        BlogManager bm = new BlogManager(new EFBlogRepository());
         public IActionResult Index()
         {
-            var values = categoryManager.GetAllCategories();
+            var values = bm.GetBlogsListWithCategory();
             return View(values);
         }
     }
